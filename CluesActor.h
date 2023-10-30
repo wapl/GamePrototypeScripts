@@ -15,6 +15,7 @@
 #include "Runtime/UMG/Public/IUMGModule.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "Slate.h"
+#include "Engine/DataTable.h"
 #include "CluesActor.generated.h"
 
 
@@ -33,6 +34,7 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Collider")
 	UBoxComponent* clueCollider;
+	
 
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
@@ -47,11 +49,18 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="UI")
 	TSubclassOf<UUserWidget> cluePromptUI;
 
+	
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="dataRow")
+	FDataTableRowHandle dataHandle;
+	
 	UPROPERTY()
 	UUserWidget* clueRef;
 
-	
-	
+	UPROPERTY()
+	bool collided;
+
+
 	
 protected:
 	// Called when the game starts or when spawned
